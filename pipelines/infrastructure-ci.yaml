@@ -1,0 +1,40 @@
+trigger:
+  branches:
+    include:
+    - develop
+  paths:
+    include:
+    - iac/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables: 
+- group: INFRASTRUCTURE_VARIABLES
+- name: WORKING_DIR
+  value: infrastructure
+- name: KEY
+  value: dev.tstate
+
+steps:
+- task: CmdLine@2
+  inputs:
+    script: 'terraform init -backend-config="storage_account_name=$(STATE_RES_GRP)" -backend-config="container_name=$(CONTAINER_NAME)" -backend-config="storage_account_name=$(STORAGE_ACCOUNT_NAME)" -backend-config="key=$(KEY)"'
+    workingDirectory: $(WORKING_DIR)
+  env:
+    ARM_ACCESS_KEY: $(ARM_ACCESS_KEY)
+    ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+    ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+  displayName: "INIT: Terraform"
+
+- task: CmdLine@2
+  inputs:
+    script: 'terraform fmt -check -recursive'
+    workingDirectory: $(WORKING_DIR)
+  displayName: "FMT: Terraform"
+
+- task: CmdLine@2
+  inputs:
+    script: 'terraform validate'
+    workingDirectory: $(WORKING_DIR)
+  displayName: "VALIDATE: Terraform"

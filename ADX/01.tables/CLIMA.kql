@@ -1,0 +1,12 @@
+.create-merge table CLIMA (
+    Estacao:int,
+    Data:string,
+    Hora:string,
+    TempBulboSeco:decimal,
+    TempBulboUmido:decimal,
+    UmidadeRelativa:decimal,
+    PressaoAtmEstacao:decimal,
+    DirecaoVento:decimal,
+    VelocidadeVento:decimal,
+    Nebulosidade:decimal
+)

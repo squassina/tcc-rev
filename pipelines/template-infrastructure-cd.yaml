@@ -1,0 +1,44 @@
+parameters:
+# INFRASTRUCTURE
+- name: KEY
+- name: TF_VAR_environment
+- name: TF_VAR_prefix
+- name: WORKING_DIR
+  default: iac
+
+jobs:
+  - job: deploy_infrastructure
+    pool:
+      vmImage: 'ubuntu-latest'
+    variables:
+    - group: INFRASTRUCTURE_VARIABLES
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: 'terraform init -backend-config="storage_account_name=$(STORAGE_ACCOUNT_NAME)" -backend-config="container_name=$(CONTAINER_NAME)"  -backend-config="key=${{ parameters.KEY }}"'
+        workingDirectory: ${{ parameters.WORKING_DIR }}
+      env:
+        ARM_ACCESS_KEY: $(ARM_ACCESS_KEY)
+        ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+        ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+      displayName: "INIT: Terraform"
+
+    - task: CmdLine@2
+      inputs:
+        script: 'terraform plan -out=plan -var="prefix=${{ parameters.TF_VAR_prefix }}" -var="environment=${{ parameters.TF_VAR_environment }}"'
+        workingDirectory: ${{ parameters.WORKING_DIR }}
+      env:
+        ARM_ACCESS_KEY: $(ARM_ACCESS_KEY)
+        ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+        ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+      displayName: "PLAN: Terraform"
+
+    - task: CmdLine@2
+      inputs:
+        script: 'terraform apply plan'
+        workingDirectory: ${{ parameters.WORKING_DIR }}
+      env:
+        ARM_ACCESS_KEY: $(ARM_ACCESS_KEY)
+        ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+        ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+      displayName: "APPLY: Terraform"

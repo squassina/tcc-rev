@@ -1,0 +1,7 @@
+.create-or-alter table GRUPOS ingestion csv mapping 'GRUPOS_csv_mapping'
+'['
+    '{"column":"CATINIC", "Properties":{"Ordinal":"0"}},'
+    '{"column":"CATFIM", "Properties":{"Ordinal":"1"}},'
+    '{"column":"DESCRICAO", "Properties":{"Ordinal":"2"}},'
+    '{"column":"DESCRABREV", "Properties":{"Ordinal":"3"}}'
+']'

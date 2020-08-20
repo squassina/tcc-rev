@@ -1,0 +1,7 @@
+.create-merge table CAPITULOS (
+    NUMCAP:int,
+    CATINIC:string,
+    CATFIM:string,
+    DESCRICAO:string,
+    DESCRABREV:string
+)

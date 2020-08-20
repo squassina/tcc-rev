@@ -1,0 +1,8 @@
+.create-or-alter table CAPITULOS ingestion csv mapping 'CAPITULOS_csv_mapping'
+'['
+    '{"column":"NUMCAP", "Properties":{"Ordinal":"0"}},'
+    '{"column":"CATINIC", "Properties":{"Ordinal":"1"}},'
+    '{"column":"CATFIM", "Properties":{"Ordinal":"2"}},'
+    '{"column":"DESCRICAO", "Properties":{"Ordinal":"3"}},'
+    '{"column":"DESCRABREV", "Properties":{"Ordinal":"4"}}'
+']'

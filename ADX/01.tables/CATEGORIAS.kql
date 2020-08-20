@@ -1,0 +1,8 @@
+.create-merge table CATEGORIAS (
+    CAT:string,
+    CLASSIF:string,
+    DESCRICAO:string,
+    DESCRABREV:string,
+    REFER:string,
+    EXCLUIDOS:string
+)

@@ -1,0 +1,10 @@
+.create-merge table SUBCATEGORIAS (
+    SUBCAT:string,
+    CLASSIF:string,
+    RESTRSEXO:string,
+    CAUSAOBITO:string,
+    DESCRICAO:string,
+    DESCRABREV:string,
+    REFER:string,
+    EXCLUIDOS:string
+)

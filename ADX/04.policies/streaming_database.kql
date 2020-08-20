@@ -1,0 +1,1 @@
+.alter database ['adx-db-squassina'] policy streamingingestion enable

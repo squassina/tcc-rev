@@ -1,0 +1,6 @@
+.create-merge table GRUPOS (
+    CATINIC:string,
+    CATFIM:string,
+    DESCRICAO:string,
+    DESCRABREV:string
+)

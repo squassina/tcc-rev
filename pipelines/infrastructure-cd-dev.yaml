@@ -1,0 +1,15 @@
+trigger:
+  branches:
+    include:
+      - develop
+  paths:
+    include:
+    - iac/*
+
+jobs:
+- template: template-infrastructure-cd.yaml
+  parameters:
+ # INFRASTRUCTURE
+    KEY: dev.tstate
+    TF_VAR_environment: development
+    TF_VAR_prefix: devenv

@@ -1,0 +1,12 @@
+.create-merge table HOSP_DET (
+    ID_EVENTO:int,
+    CD_TUSS_PROCEDIMENTO:int,
+    QT_PROCEDIMENTO:int,
+    VL_PROCEDIMENTO:decimal,
+    VL_PAGO_FORNECEDOR:int,
+    CD_TABELA_REFERENCIA:int,
+    LG_PACOTE:int,
+    IND_TABELA_PROPRIA:int,
+    DT_INICIO_EVENTO:string,
+    UF_PRESTADOR:string
+)

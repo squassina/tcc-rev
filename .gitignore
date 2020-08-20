@@ -1,0 +1,16 @@
+backup
+*.bkp
+
+.terraform
+plan*
+backend.tf
+
+.env
+
+ADF
+
+.ipynb_checkpoints
+
+data
+
+notebook
